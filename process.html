@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Process — Emmanuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050a12;--bg2:#070d1a;--card:#0a1525;--glass:rgba(10,21,37,0.82);--cyan:#00e5ff;--cd:rgba(0,229,255,0.12);--cg:rgba(0,229,255,0.5);--amber:#ffb300;--ad:rgba(255,179,0,0.11);--w:#e8f4fd;--m:#7a99b8;--b:rgba(0,229,255,0.1);--fh:'Orbitron',sans-serif;--fb:'Outfit',sans-serif;--ease:cubic-bezier(.4,0,.2,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{background:var(--bg);color:var(--w);font-family:var(--fb);overflow-x:hidden;cursor:none;}
+#cd{position:fixed;top:0;left:0;z-index:10010;width:8px;height:8px;border-radius:50%;background:var(--cyan);pointer-events:none;transform:translate(-50%,-50%);box-shadow:0 0 12px var(--cyan),0 0 24px var(--cg);}
+#cr{position:fixed;top:0;left:0;z-index:10005;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(0,229,255,.4);pointer-events:none;transform:translate(-50%,-50%);}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--cd);}
+nav{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:space-between;padding:22px 6%;transition:all .4s var(--ease);}
+nav.sc{background:var(--glass);backdrop-filter:blur(20px);border-bottom:1px solid var(--b);padding:14px 6%;}
+.nl{font-family:var(--fh);font-size:1rem;font-weight:900;letter-spacing:.1em;color:var(--cyan);text-decoration:none;}
+.nr{display:flex;gap:32px;list-style:none;}
+.nr a{color:var(--m);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:color .3s;position:relative;}
+.nr a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--cyan);transition:width .3s;}
+.nr a:hover,.nr a.active{color:var(--cyan);}.nr a:hover::after,.nr a.active::after{width:100%;}
+.ph{padding:160px 8% 80px;}
+.ph-label{font-family:var(--fh);font-size:.6rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:12px;}
+.ph-title{font-family:var(--fh);font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;line-height:.9;margin-bottom:24px;}
+.ph-title span{color:transparent;background:linear-gradient(120deg,var(--w),var(--cyan));-webkit-background-clip:text;background-clip:text;}
+.ph-sub{font-size:1.05rem;color:var(--m);max-width:580px;line-height:1.8;}
+
+/* WORKFLOW STRIP */
+.workflow{padding:0 8% 80px;display:flex;gap:0;position:relative;}
+.workflow::before{content:'';position:absolute;top:28px;left:8%;right:8%;height:1px;background:linear-gradient(90deg,var(--cyan),var(--amber));opacity:.2;}
+.wf-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding-top:0;}
+.wf-dot{width:14px;height:14px;border-radius:50%;background:var(--cyan);border:3px solid var(--bg);box-shadow:0 0 14px var(--cg);position:relative;z-index:1;margin-bottom:14px;}
+.wf-dot.a{background:var(--amber);box-shadow:0 0 14px rgba(255,179,0,.5);}
+.wf-num{font-family:var(--fh);font-size:.55rem;letter-spacing:.2em;color:var(--m);margin-bottom:6px;}
+.wf-label{font-size:.8rem;font-weight:600;color:var(--w);}
+.wf-sub{font-size:.75rem;color:var(--m);margin-top:4px;line-height:1.5;}
+
+/* PROCESS SECTION */
+.proc-section{padding:0 8% 80px;}
+.ps-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;padding-bottom:24px;border-bottom:1px solid var(--b);}
+.ps-num{font-family:var(--fh);font-size:5rem;font-weight:900;color:rgba(0,229,255,.05);line-height:1;}
+
+.ps-label{font-family:var(--fh);font-size:.58rem;letter-spacing:.35em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:8px;}
+.ps-title{font-family:var(--fh);font-size:clamp(1.6rem,4vw,2.8rem);font-weight:900;color:var(--w);}
+.ps-title span{color:var(--cyan);}
+.ps-title.a span{color:var(--amber);}
+.ps-link{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--m);text-decoration:none;transition:color .3s;}
+.ps-link:hover{color:var(--cyan);}
+.ps-link svg{width:12px;height:12px;}
+
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px;}
+.proc-card{padding:28px 26px;border:1px solid var(--b);background:var(--card);position:relative;overflow:hidden;}
+.proc-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--cyan),transparent);}
+.proc-card.a::after{background:linear-gradient(90deg,var(--amber),transparent);}
+.pc-step{font-family:var(--fh);font-size:.55rem;letter-spacing:.25em;color:var(--cyan);text-transform:uppercase;margin-bottom:10px;}
+.pc-step.a{color:var(--amber);}
+.pc-heading{font-family:var(--fh);font-size:.9rem;font-weight:700;color:var(--w);margin-bottom:12px;line-height:1.3;}
+.pc-body{font-size:.9rem;line-height:1.75;color:var(--m);}
+.pc-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+.pill{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;background:var(--cd);border:1px solid rgba(0,229,255,.15);color:var(--cyan);}
+.pill.a{background:var(--ad);border-color:rgba(255,179,0,.15);color:var(--amber);}
+
+.proc-challenge{padding:28px 32px;border:1px solid var(--b);background:var(--card);margin-bottom:40px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;}
+.pc-icon{font-size:2.5rem;line-height:1;}
+.pch-label{font-family:var(--fh);font-size:.56rem;letter-spacing:.3em;color:var(--amber);text-transform:uppercase;margin-bottom:8px;}
+.pch-title{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--w);margin-bottom:10px;}
+.pch-body{font-size:.9rem;line-height:1.75;color:var(--m);}
+
+.proc-divider{height:1px;background:linear-gradient(90deg,transparent,var(--b),transparent);margin:80px 0;}
+
+/* PORTFOLIO BUILD */
+.site-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.ss-card{padding:22px 20px;border:1px solid var(--b);background:var(--card);position:relative;}
+.ss-n{font-family:var(--fh);font-size:2.2rem;font-weight:900;color:rgba(0,229,255,.07);line-height:1;margin-bottom:12px;}
+.ss-title{font-family:var(--fh);font-size:.72rem;font-weight:700;color:var(--w);margin-bottom:8px;letter-spacing:.06em;}
+.ss-desc{font-size:.82rem;line-height:1.65;color:var(--m);}
+
+footer{border-top:1px solid var(--b);padding:32px 8%;display:flex;align-items:center;justify-content:space-between;background:#030710;}
+.fl{font-family:var(--fh);font-size:.9rem;font-weight:900;color:var(--cyan);}.ft{font-size:.72rem;color:var(--m);}
+.fs{display:flex;gap:14px;}.fs a{width:34px;height:34px;border:1px solid var(--b);display:flex;align-items:center;justify-content:center;color:var(--m);text-decoration:none;transition:all .3s;}.fs a:hover{color:var(--cyan);border-color:rgba(0,229,255,.4);background:var(--cd);}.fs a svg{width:14px;height:14px;}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .7s var(--ease),transform .7s var(--ease);}.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+body::after{content:'';position:fixed;inset:0;z-index:9990;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;}
+@media(max-width:900px){.proc-grid,.site-steps{grid-template-columns:1fr;}.workflow{flex-wrap:wrap;gap:24px;}.ps-header{flex-direction:column;align-items:flex-start;gap:12px;}}
+@media(max-width:600px){.ph,.proc-section,.workflow{padding-left:5%;padding-right:5%;}}
+</style>
+</head>
+<body>
+<div id="cd"></div><div id="cr"></div>
+<nav id="nav">
+  <a href="./index.html" class="nl">EO_</a>
+  <ul class="nr">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./projects.html">Projects</a></li>
+    <li><a href="./process.html" class="active">Process</a></li>
+    <li><a href="./skills.html">Skills</a></li>
+    <li><a href="./contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="ph">
+  <span class="ph-label rv">03 — Process</span>
+  <h1 class="ph-title rv d1">How I <span>Build</span></h1>
+  <p class="ph-sub rv d2">Every project starts with a problem worth solving. Here's the thinking, architecture, and engineering decisions behind each one.</p>
+</div>
+
+<!-- WORKFLOW STEPS -->
+<div class="workflow rv">
+  <div class="wf-step"><div class="wf-dot"></div><div class="wf-num">01</div><div class="wf-label">Identify</div><div class="wf-sub">Find a real problem</div></div>
+  <div class="wf-step"><div class="wf-dot"></div><div class="wf-num">02</div><div class="wf-label">Architect</div><div class="wf-sub">Design before coding</div></div>
+  <div class="wf-step"><div class="wf-dot a"></div><div class="wf-num">03</div><div class="wf-label">Core First</div><div class="wf-sub">Hardest feature first</div></div>
+  <div class="wf-step"><div class="wf-dot a"></div><div class="wf-num">04</div><div class="wf-label">Iterate</div><div class="wf-sub">Polish & edge cases</div></div>
+  <div class="wf-step"><div class="wf-dot"></div><div class="wf-num">05</div><div class="wf-label">Deploy</div><div class="wf-sub">Live URL. Every time.</div></div>
+</div>
+
+<!-- GROWTHOS PROCESS -->
+<div class="proc-section">
+  <div class="ps-header rv">
+    <div class="ps-num">01</div>
+    <div class="ps-meta">
+      <span class="ps-label">Project — GrowthOS</span>
+      <h2 class="ps-title">Building a <span>Personal OS</span></h2>
+      <a href="https://growth-plan-algorix20.vercel.app/" target="_blank" class="ps-link">
+        Visit Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="proc-challenge rv d1">
+    <div class="pc-icon">⚡</div>
+    <div>
+      <div class="pch-label">The Problem</div>
+      <div class="pch-title">Productivity apps do one thing. I needed them all.</div>
+      <div class="pch-body">Habit trackers don't help you set goals. Goal apps don't track skills. Journal apps don't show your progress over time. I wanted a single system that combined everything — and made it feel like leveling up in a game rather than checking boxes on a list.</div>
+    </div>
+  </div>
+
+  <div class="proc-grid">
+    <div class="proc-card rv d1">
+      <div class="pc-step">Step 01</div>
+      <div class="pc-heading">Designing the XP System</div>
+      <div class="pc-body">The gamification layer was the core idea, so it got designed first. I mapped out how XP would be earned, how levels would scale, and how skills would branch — before writing a single line of UI code. The logic had to feel fair and rewarding, not arbitrary.</div>
+      <div class="pc-pills"><span class="pill">Game Design</span><span class="pill">Logic First</span><span class="pill">State Architecture</span></div>
+    </div>
+    <div class="proc-card rv d2">
+      <div class="pc-step">Step 02</div>
+      <div class="pc-heading">Multi-Section Navigation</div>
+      <div class="pc-body">GrowthOS has 12+ sections (Overview, Habits, Journal, Trades, Analytics, Identity, etc.). I built the routing system in Next.js with a persistent sidebar — each section is its own page with shared state. The sidebar collapses on mobile without breaking layout.</div>
+      <div class="pc-pills"><span class="pill">Next.js</span><span class="pill">React Router</span><span class="pill">Shared State</span></div>
+    </div>
+    <div class="proc-card rv d1">
+      <div class="pc-step">Step 03</div>
+      <div class="pc-heading">Firebase for Persistence</div>
+      <div class="pc-body">Without persistent data, the XP system is pointless. I integrated Firebase for real-time database updates — streak counters, habit completion, XP totals, and reflection journals all persist across sessions. Auth lets the user have their own profile.</div>
+      <div class="pc-pills"><span class="pill">Firebase</span><span class="pill">Realtime DB</span><span class="pill">Auth</span></div>
+    </div>
+    <div class="proc-card rv d2">
+      <div class="pc-step">Step 04</div>
+      <div class="pc-heading">Identity & Philosophy Layer</div>
+      <div class="pc-body">The Identity and Rules sections were the most unique part of GrowthOS. A user defines who they want to become, sets their personal code of conduct, and the system surfaces these daily. It's the part that makes GrowthOS feel like a personal OS rather than just a tracker.</div>
+      <div class="pc-pills"><span class="pill">UX Design</span><span class="pill">Philosophy System</span><span class="pill">Personal Branding</span></div>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <!-- TROVE PROCESS -->
+  <div class="ps-header rv">
+    <div class="ps-num" style="color:rgba(255,179,0,.06);">02</div>
+    <div class="ps-meta">
+      <span class="ps-label" style="color:var(--amber);">Project — Trove</span>
+      <h2 class="ps-title a">Building an <span>AI Reading Platform</span></h2>
+      <a href="https://trove-reader.vercel.app/" target="_blank" class="ps-link" style="color:var(--amber);">
+        Visit Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="proc-challenge rv d1">
+    <div class="pc-icon">📚</div>
+    <div>
+      <div class="pch-label">The Problem</div>
+      <div class="pch-title">People read a lot and retain almost nothing.</div>
+      <div class="pch-body">I noticed that saving content — highlights, links, notes — didn't mean understanding it. The insight extraction step was always missing. Most apps are just storage. Trove was designed to force the user to think: What did I learn? How can I use this? The AI layer surfaces that for you automatically.</div>
+    </div>
+  </div>
+
+  <div class="proc-grid">
+    <div class="proc-card a rv d1">
+      <div class="pc-step a">Step 01</div>
+      <div class="pc-heading">The Vault Architecture</div>
+      <div class="pc-body">I designed the knowledge structure first — categories, subcategories, tags, value scores, and insight fields. This data model determines everything else. Getting it right before touching the UI meant the React components just had to display what the structure already knew.</div>
+      <div class="pc-pills"><span class="pill a">Data Modelling</span><span class="pill a">Architecture</span><span class="pill a">Schema Design</span></div>
+    </div>
+    <div class="proc-card a rv d2">
+      <div class="pc-step a">Step 02</div>
+      <div class="pc-heading">AI Insight Extraction</div>
+      <div class="pc-body">The AI layer was the hardest and most important feature. I had to prompt the model to surface genuine insights — not summaries. The prompt engineering work was significant: getting the model to produce actionable insights rather than just restating the book's content took multiple iterations.</div>
+      <div class="pc-pills"><span class="pill a">AI API</span><span class="pill a">Prompt Engineering</span><span class="pill a">Knowledge Extraction</span></div>
+    </div>
+    <div class="proc-card a rv d1">
+      <div class="pc-step a">Step 03</div>
+      <div class="pc-heading">The Circle — Social Layer</div>
+      <div class="pc-body">The social component (The Circle) was built last — after the core vault was solid. Private reading clubs, discussion threads, and member discovery required careful auth scoping to ensure club privacy. Naira payment integration via Paystack unlocks premium Circle access.</div>
+      <div class="pc-pills"><span class="pill a">Auth Scoping</span><span class="pill a">Paystack ₦</span><span class="pill a">Social UX</span></div>
+    </div>
+    <div class="proc-card a rv d2">
+      <div class="pc-step a">Step 04</div>
+      <div class="pc-heading">Book Ingestion Pipeline</div>
+      <div class="pc-body">Supporting PDF, EPUB, and TXT required building a file parsing pipeline that normalizes different formats into the same internal structure. The parser strips formatting and extracts clean text that the AI layer can work with — regardless of what format the user uploads.</div>
+      <div class="pc-pills"><span class="pill a">File Parsing</span><span class="pill a">PDF/EPUB/TXT</span><span class="pill a">Pipeline Design</span></div>
+    </div>
+  </div>
+
+  <div class="proc-divider"></div>
+
+  <!-- PORTFOLIO SITE PROCESS -->
+  <div class="ps-header rv">
+    <div class="ps-num" style="color:rgba(0,229,255,.04);">03</div>
+    <div class="ps-meta">
+      <span class="ps-label">Project — This Portfolio</span>
+      <h2 class="ps-title">Building the <span>Portfolio Site</span></h2>
+    </div>
+  </div>
+
+  <div class="site-steps rv d1">
+    <div class="ss-card">
+      <div class="ss-n">01</div>
+      <div class="ss-title">Design Direction</div>
+      <div class="ss-desc">Dark cinematic aesthetic — game UI crossed with developer brand. Every color, spacing, and motion decision was intentional. No templates, no frameworks.</div>
+    </div>
+    <div class="ss-card">
+      <div class="ss-n">02</div>
+      <div class="ss-title">Canvas Particle System</div>
+      <div class="ss-desc">120 particles with velocity vectors and proximity line connections — pure HTML5 Canvas API and requestAnimationFrame. No libraries.</div>
+    </div>
+    <div class="ss-card">
+      <div class="ss-n">03</div>
+      <div class="ss-title">Scroll Animations</div>
+      <div class="ss-desc">IntersectionObserver triggers staggered fade-up reveals on every section. Skill bars animate in on viewport entry. Zero GSAP.</div>
+    </div>
+    <div class="ss-card">
+      <div class="ss-n">04</div>
+      <div class="ss-title">3D Card Tilt</div>
+      <div class="ss-desc">Mouse position mapped to CSS perspective() + rotateX/Y transforms in real time. Creates a physical depth illusion without any 3D library.</div>
+    </div>
+  </div>
+
+  <div class="proc-challenge rv d2">
+    <div class="pc-icon">🖥️</div>
+    <div>
+      <div class="pch-label">Tech Stack — Portfolio Site</div>
+      <div class="pch-title">Pure HTML · CSS · Vanilla JavaScript · Zero frameworks</div>
+      <div class="pch-body">The whole site is hand-crafted. No Bootstrap, no Tailwind, no React. Every animation, every glow, every particle is something I understand and control at the source code level. Multi-page architecture with shared design language across 5 pages. Deployed to Vercel.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fl">EO_</div>
+  <div class="ft">© 2025 Emmanuel Peter</div>
+  <div class="fs"><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a></div>
+</footer>
+<script>
+const dot=document.getElementById('cd'),ring=document.getElementById('cr');
+let rx=0,ry=0,mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function ani(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ani);})();
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
